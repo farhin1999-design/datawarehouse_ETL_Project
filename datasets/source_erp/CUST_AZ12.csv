@@ -1,0 +1,13 @@
+customer_id,account_number,account_type,billing_country,created_date
+C001,AC-1001,Retail,India,2024-01-15
+C002,AC-1002,Premium,UAE,2024-02-15
+C003,AC-1003,Retail,UK,2024-03-05
+C004,AC-1004,Retail,IN,2024-04-10
+C005,AC-1005,Premium,UAE,2024-05-21
+C006,AC-1006,Retail,India,2024-06-01
+C007,AC-1007,Corporate,USA,2024-06-15
+C008,AC-1008,Premium,UAE,2024-07-02
+C009,AC-1009,Retail,India,2024-07-19
+C010,AC-1010,Retail,UK,2024-08-03
+C005,AC-1005,Premium,UAE,2024-05-21
+C014,,Retail,India,2024-10-01

@@ -1,0 +1,10 @@
+product_id,product_category,subcategory
+P001,Electronics,Computers
+P002,Electronics,Accessories
+P003,Furniture,Office
+P004,Electronics,Mobiles
+P005,Furniture,Office
+P006,Electronics,Displays
+P007,Accessories,Computer Accessories
+P008, accessories ,Connectivity
+P999,Electronics,Unknown Product
