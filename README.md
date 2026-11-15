@@ -1,172 +1,192 @@
-# 🏗️ Data Warehouse ETL Project | Medallion Architecture
+# 🏗️ Data Warehouse & ETL Project
+### Building an End-to-End Data Warehouse Using Medallion Architecture
 
-![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
-![T-SQL](https://img.shields.io/badge/T--SQL-4479A1?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![Architecture](https://img.shields.io/badge/Architecture-Medallion-gold?style=for-the-badge)
+<p align="center">
+  <img src="https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" />
+  <img src="https://img.shields.io/badge/T--SQL-4479A1?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" />
+  <img src="https://img.shields.io/badge/Data_Warehouse-Medallion_Architecture-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Version_Control-GitHub-181717?style=for-the-badge&logo=github" />
+</p>
 
-## 📌 Project Overview
+## 📖 Project Overview
 
-This project demonstrates the development of a Data Warehouse using **Medallion Architecture** and an ETL (Extract, Transform, Load) approach.
+This project focuses on designing and developing a Data Warehouse using **Medallion Architecture** and SQL-based ETL processes.
 
-The objective is to build a structured data pipeline that organizes raw data, applies data cleaning and transformation processes, and prepares business-ready data for analytical purposes.
+The project follows a layered approach to ingest, transform, clean, and organize data into structured datasets for business intelligence and analytical purposes.
 
-The project follows three architectural layers:
+The architecture consists of three layers:
 
 - 🥉 **Bronze Layer:** Stores raw data from source systems.
-- 🥈 **Silver Layer:** Cleans, validates, and standardizes data.
+- 🥈 **Silver Layer:** Cleans, validates, and standardizes the ingested data.
 - 🥇 **Gold Layer:** Organizes transformed data into business-ready structures for reporting and analysis.
 
 ---
 
 ## 1. 🧩 Components
 
-The project consists of the following major components:
+The project consists of the following components:
 
 ### 🗄️ Data Sources
 - Source datasets containing business information.
 - Raw data ingestion into the data warehouse.
-- Preservation of source data for further processing.
+- Source data preservation for downstream processing.
 
 ### 🥉 Bronze Layer – Raw Data
-- Loads data from source files into the warehouse.
-- Maintains raw data with minimal transformations.
-- Acts as the initial storage layer of the ETL pipeline.
+- Loads raw data from source files.
+- Stores data in its original structure.
+- Maintains a foundation for further transformations.
 
-### 🥈 Silver Layer – Data Transformation
-- Removes duplicate records.
+### 🥈 Silver Layer – Cleansed Data
+- Handles duplicate records.
+- Standardizes inconsistent values.
 - Handles NULL and missing values.
-- Standardizes inconsistent data.
-- Performs data type conversions.
-- Applies data validation and business rules.
+- Performs data type validation and conversion.
+- Applies data quality checks.
 
 ### 🥇 Gold Layer – Business-Ready Data
-- Organizes cleaned data for analytical consumption.
-- Structures data into dimensions and facts where applicable.
-- Supports business reporting and analytical queries.
+- Organizes transformed data.
+- Supports analytical data modeling.
+- Structures business information for reporting.
+- Provides data for downstream analytical consumption.
 
-### 📚 Documentation
-- Stores project-related documentation.
-- Organizes supporting project resources and technical references.
+### 📚 Documentation & SQL Scripts
+- SQL scripts for database development and ETL processing.
+- Project documentation and supporting resources.
+- Organized datasets and project files.
 
 ---
 
 ## 2. 🎯 Problem Statement
 
-Organizations often maintain business data across multiple source systems and files.
+Organizations often maintain business data across multiple sources and systems.
 
-This creates several challenges:
+However, raw data may contain several issues:
 
-- Inconsistent data formats across different sources.
-- Duplicate and missing records.
+- Inconsistent data formats.
+- Duplicate records.
+- Missing and NULL values.
 - Data quality and validation issues.
 - Difficulty integrating information from multiple sources.
-- Limited availability of structured data for business reporting.
+- Lack of structured and reliable data for analytical reporting.
 
-Without a properly designed data warehouse, analyzing business information becomes difficult and time-consuming.
+These challenges make it difficult for businesses to generate accurate insights and make informed decisions.
 
-**The goal of this project is to develop a centralized data warehouse that transforms raw source data into clean, structured, and reliable information using an organized ETL pipeline.**
+**The objective of this project is to develop a centralized Data Warehouse that processes raw data through structured ETL pipelines and transforms it into clean, consistent, and analysis-ready information.**
 
 ---
 
 ## 3. 💡 Solution
 
-The project implements a Medallion Architecture to process data through three progressive layers.
+To address these challenges, this project implements **Medallion Architecture**, dividing the data processing workflow into three progressive layers.
 
-### 🔄 ETL Workflow
+### 🔄 ETL Architecture
 
-**Extract → Transform → Load → Analyze**
+```text
+       📂 SOURCE DATA
+              |
+              ▼
+       🥉 BRONZE LAYER
+         Raw Data
+              |
+              ▼
+       🥈 SILVER LAYER
+   Cleansing & Transformation
+              |
+              ▼
+        🥇 GOLD LAYER
+    Business-Ready Data
+              |
+              ▼
+       📊 ANALYTICS &
+         REPORTING
+```
 
-| Layer | Process | Objective |
-|---|---|---|
-| 🥉 Bronze | Data ingestion | Store raw source data |
-| 🥈 Silver | Data cleaning and transformation | Improve data quality and consistency |
-| 🥇 Gold | Data modeling and organization | Prepare business-ready data |
+### 🥉 Bronze Layer – Data Ingestion
 
-### 🥉 Bronze Layer
+The Bronze layer acts as the initial landing zone for source data.
 
-The Bronze layer acts as the landing zone for incoming data.
-
-Key activities:
+**Key activities:**
 - Extract data from source datasets.
 - Load raw records into Bronze tables.
-- Preserve original source information.
-- Maintain a foundation for downstream transformations.
+- Preserve source information.
+- Maintain raw data for downstream processing.
 
-### 🥈 Silver Layer
+### 🥈 Silver Layer – Data Transformation
 
-The Silver layer focuses on improving data quality.
+The Silver layer focuses on improving data quality and consistency.
 
-Key activities:
-- Identify and handle duplicate records.
+**Key activities:**
+- Remove or handle duplicate records based on business rules.
 - Standardize text values.
-- Validate and convert data types.
 - Handle NULL values.
-- Apply transformation and validation rules.
+- Validate and convert data types.
+- Apply data cleansing and transformation logic.
 
-### 🥇 Gold Layer
+### 🥇 Gold Layer – Data Modeling
 
-The Gold layer provides structured data for business consumption.
+The Gold layer prepares the transformed data for business consumption.
 
-Key activities:
-- Create analytical data structures.
-- Organize data into fact and dimension tables where applicable.
+**Key activities:**
+- Organize data into analytical structures.
+- Develop fact and dimension tables where applicable.
 - Establish relationships between business entities.
-- Prepare data for reporting and analysis.
+- Prepare structured data for reporting and analysis.
 
 ---
 
 ## 4. 📁 Folder Structure
 
-The repository is organized into the following main directories:
+The repository follows this structure:
 
 ```text
 datawarehouse_ETL_Project/
 │
 ├── 📂 datasets/
-│   └── Source datasets used in the project
+│   └── Source datasets
 │
 ├── 📂 docs/
-│   └── Project documentation and supporting resources
+│   └── Project documentation
 │
 ├── 📂 scripts/
-│   └── SQL scripts for database development
+│   └── SQL scripts
 │
 ├── 📄 LICENSE
 │
 └── 📄 README.md
 ```
 
-### Folder Description
+### 📌 Folder Description
 
-| Folder/File | Purpose |
+| Folder / File | Description |
 |---|---|
-| `datasets/` | Contains source data used for ETL processing. |
-| `docs/` | Contains project documentation and supporting resources. |
-| `scripts/` | Contains SQL scripts for database creation, data loading, and transformations. |
-| `LICENSE` | Defines the project's licensing terms. |
-| `README.md` | Provides project documentation and an overview. |
+| 📂 datasets | Contains source datasets used in the project. |
+| 📂 docs | Stores project documentation and supporting resources. |
+| 📂 scripts | Contains SQL scripts used for database development and ETL processing. |
+| 📄 LICENSE | Contains project licensing information. |
+| 📄 README.md | Provides project overview and technical documentation. |
 
 ---
 
 ## 5. 🏆 Project Outcomes
 
-Through this project, the following practical concepts and skills are demonstrated:
+This project demonstrates practical understanding of the following concepts:
 
-- Understanding of Data Warehouse architecture.
-- Implementation of Medallion Architecture.
-- Understanding of end-to-end ETL workflows.
-- Data ingestion and raw data management.
-- SQL-based data cleaning and transformation.
-- Data validation and quality management.
-- Understanding of fact and dimension modeling.
-- Organizing data for analytical consumption.
-- Maintaining structured and reusable SQL scripts.
-- Using GitHub for project version control and documentation.
+- ✅ Data Warehouse architecture and design.
+- ✅ Medallion Architecture implementation.
+- ✅ End-to-end ETL workflow.
+- ✅ Raw data ingestion and management.
+- ✅ SQL-based data cleaning and transformation.
+- ✅ Data quality checks and validation.
+- ✅ Understanding of fact and dimension modeling.
+- ✅ Organizing data into analytical layers.
+- ✅ Structured SQL development.
+- ✅ GitHub repository management and documentation.
 
 ### 🚀 Key Takeaway
 
-This project demonstrates how raw business data can be transformed into structured, reliable, and analysis-ready information through a layered Data Warehouse architecture.
+The project demonstrates how raw source data can be transformed into reliable, structured, and business-ready information using a layered Data Warehouse architecture.
+
+It provides practical exposure to the fundamental concepts involved in building and maintaining an ETL-based Data Warehouse.
 
 ---
 
@@ -174,10 +194,10 @@ This project demonstrates how raw business data can be transformed into structur
 
 **Farhin Afroz**
 
-GitHub: [@farhin1999-design](https://github.com/farhin1999-design)
+🔗 **GitHub:** [farhin1999-design](https://github.com/farhin1999-design)
 
-**Project Repository:** [Data Warehouse ETL Project](https://github.com/farhin1999-design/datawarehouse_ETL_Project)
+📂 **Project Repository:** [Data Warehouse ETL Project](https://github.com/farhin1999-design/datawarehouse_ETL_Project)
 
 ---
 
-⭐ If you find this project useful, feel free to explore the repository and its implementation.
+⭐ If you find this project useful, feel free to explore the repository!
